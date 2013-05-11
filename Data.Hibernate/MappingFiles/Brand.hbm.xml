@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" default-lazy="true" namespace="Iridescent.Entities" assembly="Iridescent.Entities">
+	<class name="Brand,Iridescent.Entities" table="Brand" lazy="true">
+
+		<!-- Primary Key(s) -->
+		<id name="BrandId" column="BrandId" type="Int32" unsaved-value="0">
+			<generator class="native"/>
+		</id>
+		
+		<!-- Properties -->
+		<property column="BrandName" type="String" name="BrandName" not-null="true" length="200" />
+		<property column="Description" type="String" name="Description" not-null="true" length="2000" />
+		<property column="GoodsCount" type="Int32" name="GoodsCount" not-null="true" />
+		<property column="CreatedDate" type="DateTime" name="CreatedDate" not-null="true" />
+		<property column="OrderIndex" type="Int32" name="OrderIndex" not-null="true" />
+		
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="QueuePrototype.Order">
+    <Position X="5" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABAAAAAAAAAAAAACAAAAQABAAAAAAA=</HashCode>
+      <FileName>Order.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="QueuePrototype.OrderConsumer">
+    <Position X="2.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAIAAAAgAgAAAA=</HashCode>
+      <FileName>OrderConsumer.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_syncEvents" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Field Name="_queue" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="QueuePrototype.OrderProducer">
+    <Position X="7.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAEBAAAAAAAAAAAAAIAAAAAAAAAAA=</HashCode>
+      <FileName>OrderProducer.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_syncEvents" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Field Name="_queue" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="QueuePrototype.Program">
+    <Position X="5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAABCAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="orderConsumer" />
+      <Field Name="orderProducer" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="QueuePrototype.SyncEvents">
+    <Position X="5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAQQAAAAAAEAAEAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SyncEvents.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="宋体" Size="9" />
+</ClassDiagram>

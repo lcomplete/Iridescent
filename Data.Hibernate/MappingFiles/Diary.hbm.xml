@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" default-lazy="true" namespace="Iridescent.Entities" assembly="Iridescent.Entities">
+	<class name="Diary,Iridescent.Entities" table="Diary" lazy="true">
+
+		<!-- Primary Key(s) -->
+		<id name="Id" column="Id" type="Int32" unsaved-value="0">
+			<generator class="native"/>
+		</id>
+		
+		<!-- Properties -->
+		<property column="CategoryId" type="Int32" name="CategoryId" not-null="true" />
+		<property column="Title" type="String" name="Title" not-null="true" length="100" />
+		<property column="Keywords" type="String" name="Keywords" not-null="true" length="100" />
+		<property column="Details" type="String" name="Details" not-null="true" length="1073741823" />
+		<property column="CreateDate" type="DateTime" name="CreateDate" not-null="true" />
+		<property column="LastUpdateTime" type="DateTime" name="LastUpdateTime" not-null="true" />
+		<property column="IsOpen" type="Boolean" name="IsOpen" not-null="true" />
+		<property column="ViewCount" type="Int32" name="ViewCount" not-null="true" />
+		
+	</class>
+</hibernate-mapping>
