@@ -1,0 +1,41 @@
+<html>
+    <head>
+        <script type="text/javascript" src="http://code.jquery.com/jquery-1.4.2.min.js"></script>
+        <script type="text/javascript" src="easy.layer.js"></script>
+        <style type="text/css">
+            .layer{
+                display:none;
+            }
+        </style>
+    </head>
+    <body>
+        <a href="#" class="trigger">hover me!</a>
+        | <a href="#" class="frame-trigger">click me!</a>
+        <div id="layer">
+            float layer!
+        </div>
+        <script type="text/javascript">
+            var layer=new easy.layer({
+                    "trigger":".trigger",
+                    "content":"#layer",
+                    "offset":{x:0,y:20},
+                    "showAction":easy.layer.showAction.expand,
+                    "actionSpeed":100,
+                    "closeTimeout":200
+                    });
+            var layer=new easy.layer({
+                    "trigger":".frame-trigger",
+                    "src":"http://www.baidu.com",
+                    "title":"baidu",
+                    "closeText":"X",
+                    "style":{width:800,height:500},
+                    "showAction":easy.layer.showAction.slideV,
+                    "actionSpeed":100,
+                    "closeTimeout":200,
+                    "triggerType":easy.layer.triggerType.click,
+                    "positionType":easy.layer.positionType.center,
+                    "isModal":true
+                    });
+        </script>
+    </body>
+</html>
