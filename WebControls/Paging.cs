@@ -553,7 +553,7 @@ namespace Iridescent.WebControls
             {
                 OnPageChanged(EventArgs.Empty);
             }
-            if (!EnabledUrlRewrite && UrlPatterns.IsNullOrEmpty() && !EnabledPostBack)//非重写、正则替换和回传形式时 先组织url（除页数以外的部分）
+            if (!EnabledUrlRewrite && string.IsNullOrEmpty(UrlPatterns) && !EnabledPostBack)//非重写、正则替换和回传形式时 先组织url（除页数以外的部分）
                 _linkHrefWithOutPageIndex = GetLinkHrefWithOutPageIndex();
 
             base.OnLoad(e);

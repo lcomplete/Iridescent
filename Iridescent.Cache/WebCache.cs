@@ -9,26 +9,16 @@ namespace Iridescent.Cache
 {
     public class WebCache :ICache
     {
-        private HttpContext _context;
-
-        public WebCache()
-        {
-            _context = HttpContext.Current;
-            if(_context==null)
-            {
-                throw new HttpRequestValidationException("不存在http请求上下文");
-            }
-        }
 
         public bool Set(string key, object value)
         {
-            _context.Cache.Insert(key,value);
+            HttpRuntime.Cache.Insert(key,value);
             return true;
         }
 
         public bool Set(string key, object value, DateTime expiresAt)
         {
-            _context.Cache.Insert(key, value, null, expiresAt, System.Web.Caching.Cache.NoSlidingExpiration);
+            HttpRuntime.Cache.Insert(key, value, null, expiresAt, System.Web.Caching.Cache.NoSlidingExpiration);
             return true;
         }
 
@@ -40,7 +30,7 @@ namespace Iridescent.Cache
 
         public object Get(string key)
         {
-            return _context.Cache.Get(key);
+            return HttpRuntime.Cache.Get(key);
         }
 
         public T Get<T>(string key) where T:class 
@@ -50,16 +40,16 @@ namespace Iridescent.Cache
 
         public bool Remove(string key)
         {
-            _context.Cache.Remove(key);
+            HttpRuntime.Cache.Remove(key);
             return true;
         }
 
         public void FlushAll()
         {
-            IDictionaryEnumerator cacheEnumerator = _context.Cache.GetEnumerator();
+            IDictionaryEnumerator cacheEnumerator = HttpRuntime.Cache.GetEnumerator();
             do
             {
-                _context.Cache.Remove(cacheEnumerator.Key.ToString());
+                HttpRuntime.Cache.Remove(cacheEnumerator.Key.ToString());
             } while (cacheEnumerator.MoveNext());
         }
     }
