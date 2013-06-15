@@ -33,8 +33,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Fasterflect">
+      <HintPath>..\packages\fasterflect.2.1.3\lib\net40\Fasterflect.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="nunit.framework">
+      <HintPath>..\packages\NUnit.2.6.2\lib\nunit.framework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core">
@@ -52,6 +57,7 @@
     </CodeAnalysisDependentAssemblyPaths>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CacheHandler\CachingHandlerTest.cs" />
     <Compile Include="Utils\DateTimeUtilsTest.cs" />
     <Compile Include="Utils\IDCardVerifyTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -67,6 +73,22 @@
       <Project>{B44F782D-806F-45F6-B85D-588DC55B7212}</Project>
       <Name>Entities</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Examples.IService\Examples.IService.csproj">
+      <Project>{d3c67f93-4977-471d-b8de-022c1963c15f}</Project>
+      <Name>Examples.IService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Examples.Service\Examples.Service.csproj">
+      <Project>{f4ccdf4d-821b-4505-9ded-2f87d882782f}</Project>
+      <Name>Examples.Service</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Iridescent.CacheHandler\Iridescent.CacheHandler.csproj">
+      <Project>{dd1c889e-9775-4a5f-8632-3bd1b8e20a7a}</Project>
+      <Name>Iridescent.CacheHandler</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Iridescent.DependencyResolution\Iridescent.DependencyResolution.csproj">
+      <Project>{c1e485b7-96d4-4493-bbfa-4ecc045570b5}</Project>
+      <Name>Iridescent.DependencyResolution</Name>
+    </ProjectReference>
     <ProjectReference Include="..\OrmUtils\OrmExpress.csproj">
       <Project>{10C0AA28-36C3-42F8-B068-53DB3904DD2E}</Project>
       <Name>OrmExpress</Name>
@@ -78,6 +100,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

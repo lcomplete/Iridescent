@@ -61,6 +61,7 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AOP\Test.aspx" />
     <Content Include="Cache\Test.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="NHibernate\Test.aspx" />
@@ -78,6 +79,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Ajax.cs" />
+    <Compile Include="AOP\Test.aspx.cs">
+      <DependentUpon>Test.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AOP\Test.aspx.designer.cs">
+      <DependentUpon>Test.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Cache\Test.aspx.cs">
       <DependentUpon>Test.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -125,9 +133,21 @@
       <Project>{B44F782D-806F-45F6-B85D-588DC55B7212}</Project>
       <Name>Entities</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Examples.IService\Examples.IService.csproj">
+      <Project>{d3c67f93-4977-471d-b8de-022c1963c15f}</Project>
+      <Name>Examples.IService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Examples.Service\Examples.Service.csproj">
+      <Project>{f4ccdf4d-821b-4505-9ded-2f87d882782f}</Project>
+      <Name>Examples.Service</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Iridescent.Cache\Iridescent.Cache.csproj">
       <Project>{514d4caf-5e16-41e0-b6a2-7bdda5ba511c}</Project>
       <Name>Iridescent.Cache</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Iridescent.DependencyResolution\Iridescent.DependencyResolution.csproj">
+      <Project>{c1e485b7-96d4-4493-bbfa-4ecc045570b5}</Project>
+      <Name>Iridescent.DependencyResolution</Name>
     </ProjectReference>
     <ProjectReference Include="..\Iridescent.Memcached\Iridescent.Memcached.csproj">
       <Project>{1f6dbac8-a556-4e05-af5d-bf002f12cecc}</Project>

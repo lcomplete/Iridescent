@@ -32,7 +32,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -40,9 +43,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DateTimeUtils.cs" />
+    <Compile Include="Common\EncryptUtils.cs" />
+    <Compile Include="Common\ImageTool.cs" />
+    <Compile Include="Common\OrmUtils.cs" />
+    <Compile Include="Common\ReflectHelper.cs" />
+    <Compile Include="Common\StreamUtils.cs" />
+    <Compile Include="Common\StringParseUtils.cs" />
+    <Compile Include="Common\UrlUtils.cs" />
+    <Compile Include="Common\ValueConverter.cs" />
+    <Compile Include="Verify\VerifyUtils.cs" />
+    <Compile Include="Common\XmlSerializerUtils.cs" />
+    <Compile Include="Common\DateTimeUtils.cs" />
+    <Compile Include="FluentEmail\DefaultTemplateRender.cs" />
+    <Compile Include="FluentEmail\Email.cs" />
+    <Compile Include="FluentEmail\IHideObjectMembers.cs" />
+    <Compile Include="FluentEmail\ITemplateRenderer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ValueConverter.cs" />
+    <Compile Include="Setting\AppSetting.cs" />
+    <Compile Include="Setting\ClassifySetting.cs" />
+    <Compile Include="Setting\DynamicSetting.cs" />
+    <Compile Include="Setting\ISetting.cs" />
     <Compile Include="Verify\IDCardVerify.cs" />
   </ItemGroup>
   <ItemGroup />

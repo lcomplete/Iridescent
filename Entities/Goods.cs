@@ -4,7 +4,7 @@ using Iridescent.OrmExpress;
 namespace Iridescent.Entities
 {
     [Serializable]
-    public class Bhg_Goods
+    public class Goods
     {
         private int _goodsid;
         private int _userid;

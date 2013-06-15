@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
-namespace Iridescent.Utils
+namespace Iridescent.Utils.Common
 {
     public static class DateTimeUtils
     {

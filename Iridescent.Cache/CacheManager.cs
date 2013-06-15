@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Iridescent.Cache
 {
-    public class CacheManager
+    public class CacheManager : ICache
     {
         private ICache _cacheProvider;
 
@@ -35,7 +35,7 @@ namespace Iridescent.Cache
         }
 
         #region CacheProvider 委托
-        
+
         public bool Set(string key, object value)
         {
             return _cacheProvider.Set(CacheGroup + key, value);
@@ -60,7 +60,7 @@ namespace Iridescent.Cache
         {
             return _cacheProvider.Get<T>(CacheGroup + key);
         }
-        
+
         public bool Remove(string key)
         {
             return _cacheProvider.Remove(CacheGroup + key);
