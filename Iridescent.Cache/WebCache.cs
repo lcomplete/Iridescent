@@ -33,9 +33,10 @@ namespace Iridescent.Cache
             return HttpRuntime.Cache.Get(key);
         }
 
-        public T Get<T>(string key) where T:class 
+        public T Get<T>(string key)
         {
-            return Get(key) as T;
+            object obj = Get(key);
+            return obj != null ? (T)obj : default(T);
         }
 
         public bool Remove(string key)

@@ -56,7 +56,7 @@ namespace Iridescent.Cache
             return _cacheProvider.Get(CacheGroup + key);
         }
 
-        public T Get<T>(string key) where T : class
+        public T Get<T>(string key)
         {
             return _cacheProvider.Get<T>(CacheGroup + key);
         }

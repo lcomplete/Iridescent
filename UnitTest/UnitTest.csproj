@@ -40,6 +40,17 @@
     <Reference Include="nunit.framework">
       <HintPath>..\packages\NUnit.2.6.2\lib\nunit.framework.dll</HintPath>
     </Reference>
+    <Reference Include="ServiceStack.Common, Version=3.9.71.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\ServiceStack.Common.3.9.71\lib\net35\ServiceStack.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Interfaces">
+      <HintPath>..\packages\ServiceStack.Common.3.9.71\lib\net35\ServiceStack.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Text, Version=3.9.11.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\ServiceStack.Text.3.9.11\lib\net35\ServiceStack.Text.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core">
@@ -48,6 +59,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Transactions" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
@@ -58,6 +70,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CacheHandler\CachingHandlerTest.cs" />
+    <Compile Include="Redis\RedisTest.cs" />
     <Compile Include="Utils\DateTimeUtilsTest.cs" />
     <Compile Include="Utils\IDCardVerifyTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -85,9 +98,17 @@
       <Project>{dd1c889e-9775-4a5f-8632-3bd1b8e20a7a}</Project>
       <Name>Iridescent.CacheHandler</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Iridescent.Cache\Iridescent.Cache.csproj">
+      <Project>{514d4caf-5e16-41e0-b6a2-7bdda5ba511c}</Project>
+      <Name>Iridescent.Cache</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Iridescent.DependencyResolution\Iridescent.DependencyResolution.csproj">
       <Project>{c1e485b7-96d4-4493-bbfa-4ecc045570b5}</Project>
       <Name>Iridescent.DependencyResolution</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Iridescent.Redis\Iridescent.Redis.csproj">
+      <Project>{b8ad2d6e-5ab3-45e5-aa8a-bf7a7623309d}</Project>
+      <Name>Iridescent.Redis</Name>
     </ProjectReference>
     <ProjectReference Include="..\OrmUtils\OrmExpress.csproj">
       <Project>{10C0AA28-36C3-42F8-B068-53DB3904DD2E}</Project>

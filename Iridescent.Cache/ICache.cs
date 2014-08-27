@@ -12,7 +12,7 @@ namespace Iridescent.Cache
         bool Set(string key, object value, TimeSpan validateFor);
 
         object Get(string key);
-        T Get<T>(string key) where T:class ;
+        T Get<T>(string key);
 
         bool Remove(string key);
 

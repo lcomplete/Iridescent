@@ -37,7 +37,7 @@ namespace Iridescent.Memcached
             return _client.Get(key);
         }
 
-        public T Get<T>(string key) where T : class
+        public T Get<T>(string key)
         {
             return _client.Get<T>(key);
         }
