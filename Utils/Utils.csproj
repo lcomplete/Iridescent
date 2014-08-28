@@ -53,6 +53,13 @@
     <Compile Include="Common\ValueConverter.cs" />
     <Compile Include="DataAccess\DapperUtils.cs" />
     <Compile Include="DataAccess\SqlMapper.cs" />
+    <Compile Include="Http\BadRequestException.cs" />
+    <Compile Include="Http\ParameterUtils.cs" />
+    <Compile Include="Http\RequestMethod.cs" />
+    <Compile Include="Http\RequestParameter.cs" />
+    <Compile Include="Http\RequestParameterComparer.cs" />
+    <Compile Include="Http\RequestUtils.cs" />
+    <Compile Include="Http\UrlUtils.cs" />
     <Compile Include="Verify\VerifyUtils.cs" />
     <Compile Include="Common\XmlSerializerUtils.cs" />
     <Compile Include="Common\DateTimeUtils.cs" />
