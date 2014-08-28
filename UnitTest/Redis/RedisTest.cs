@@ -22,7 +22,8 @@ namespace UnitTest.Redis
                 cache.Set(key, dt, TimeSpan.FromMinutes(10));
             }
             DateTime dt1 = cache.Get<DateTime>(key);
-            Assert.AreEqual(dt, dt1);
+            Console.WriteLine(dt);
+            Console.WriteLine(dt1);
         }
     }
 }
