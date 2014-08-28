@@ -51,6 +51,8 @@
     <Compile Include="Common\StringParseUtils.cs" />
     <Compile Include="Common\UrlUtils.cs" />
     <Compile Include="Common\ValueConverter.cs" />
+    <Compile Include="DataAccess\DapperUtils.cs" />
+    <Compile Include="DataAccess\SqlMapper.cs" />
     <Compile Include="Verify\VerifyUtils.cs" />
     <Compile Include="Common\XmlSerializerUtils.cs" />
     <Compile Include="Common\DateTimeUtils.cs" />
