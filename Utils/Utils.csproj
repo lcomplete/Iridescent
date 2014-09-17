@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\CycleRefrenceRemover.cs" />
     <Compile Include="Common\EncryptUtils.cs" />
     <Compile Include="Common\ImageTool.cs" />
     <Compile Include="Common\OrmUtils.cs" />
