@@ -26,9 +26,29 @@ namespace Iridescent.Utils.Common
         /// </summary>
         public void RemoveCycle()
         {
-            var pathContainer = new HashSet<object>();
-            pathContainer.Add(Entity);
-            BreakCycle(pathContainer, Entity);
+            RemoveCycle(Entity);
+        }
+
+        /// <summary>
+        /// 移除循环引用
+        /// </summary>
+        /// <param name="topEntity">顶层实体</param>
+        private void RemoveCycle(object topEntity)
+        {
+            var enumEntity = topEntity as IEnumerable;
+            if (enumEntity != null)
+            {
+                //若顶层实体为列表对象，则依次针对子对象移除循环引用
+                foreach (var entity in enumEntity)
+                {
+                    RemoveCycle(entity);
+                }
+            }
+            else
+            {
+                var pathContainer = new HashSet<object>() { topEntity };
+                BreakCycle(pathContainer, topEntity);
+            }
         }
 
         /// <summary>
