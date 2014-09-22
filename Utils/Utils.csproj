@@ -31,6 +31,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.AnalysisServices.AdomdClient, Version=10.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Lib\Microsoft.AnalysisServices.AdomdClient.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
@@ -61,6 +65,8 @@
     <Compile Include="Http\RequestParameterComparer.cs" />
     <Compile Include="Http\RequestUtils.cs" />
     <Compile Include="Http\UrlUtils.cs" />
+    <Compile Include="Misc\AnalysisServiceHelper.cs" />
+    <Compile Include="Misc\CellMemberAttribute.cs" />
     <Compile Include="Verify\VerifyUtils.cs" />
     <Compile Include="Common\XmlSerializerUtils.cs" />
     <Compile Include="Common\DateTimeUtils.cs" />
