@@ -22,9 +22,9 @@ namespace Iridescent.JobService
                 });
                 x.RunAsLocalSystem();
 
-                x.SetDescription("Zxly报表统计服务");
-                x.SetDisplayName("Zxly报表统计服务");
-                x.SetServiceName("Zxly.Statistics.Jobs");
+                x.SetDescription("service description");
+                x.SetDisplayName("job service");
+                x.SetServiceName("job service");
             });
         }
 

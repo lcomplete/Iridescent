@@ -1,29 +1,16 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Text;
 using Iridescent.Cache;
 using ServiceStack.Redis;
 
 namespace Iridescent.Redis
 {
-    /// <summary>
-    /// Redis缓存类
-    /// </summary>
-    public class RedisCache:ICache
+    public class BinaryRedisCache : ICache
     {
-        /// <summary>
-        /// 将缓存值包装为强类型
-        /// </summary>
-        [Serializable]
-        class ValueWrapper
-        {
-            public object Value { get; private set; }
-
-            public ValueWrapper(object value)
-            {
-                Value = value;
-            }
-        }
 
         public bool Set(string key, object value)
         {
@@ -33,7 +20,7 @@ namespace Iridescent.Redis
 
             using (client)
             {
-                return client.Set(key, new ValueWrapper(value));
+                return client.Set(key, BinarySerialize(value));
             }
         }
 
@@ -45,7 +32,16 @@ namespace Iridescent.Redis
 
             using (client)
             {
-                return client.Set(key, new ValueWrapper(value), expiresAt);
+                return client.Set(key, BinarySerialize(value), expiresAt);
+            }
+        }
+
+        private byte[] BinarySerialize(object value)
+        {
+            using (MemoryStream memoryStream = new MemoryStream())
+            {
+                new BinaryFormatter().Serialize(memoryStream, value);
+                return memoryStream.ToArray();
             }
         }
 
@@ -57,7 +53,7 @@ namespace Iridescent.Redis
 
             using (client)
             {
-                return client.Set(key, new ValueWrapper(value), expiresIn);
+                return client.Set(key, BinarySerialize(value), expiresIn);
             }
         }
 
@@ -75,10 +71,14 @@ namespace Iridescent.Redis
             T result = default(T);
             using (client)
             {
-                ValueWrapper wrapper= client.Get<ValueWrapper>(key);
-                if (wrapper != null)
+                byte[] cacheBuffer = client.Get<byte[]>(key);
+                if (cacheBuffer != null)
                 {
-                    return (T) wrapper.Value;
+                    using (MemoryStream ms = new MemoryStream(cacheBuffer))
+                    {
+                        object obj = new BinaryFormatter().Deserialize(ms);
+                        result = (T)obj;
+                    }
                 }
             }
 

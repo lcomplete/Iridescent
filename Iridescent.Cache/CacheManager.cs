@@ -46,9 +46,9 @@ namespace Iridescent.Cache
             return _cacheProvider.Set(CacheGroup + key, value, expiresAt);
         }
 
-        public bool Set(string key, object value, TimeSpan validateFor)
+        public bool Set(string key, object value, TimeSpan expiresIn)
         {
-            return _cacheProvider.Set(CacheGroup + key, value, validateFor);
+            return _cacheProvider.Set(CacheGroup + key, value, expiresIn);
         }
 
         public object Get(string key)

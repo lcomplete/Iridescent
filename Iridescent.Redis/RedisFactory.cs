@@ -18,7 +18,7 @@ namespace Iridescent.Redis
 
         static RedisFactory()
         {
-            var redisConfig = ConfigurationManager.GetSection("redisSection") as RedisConfigurationSection;
+            var redisConfig = ConfigurationManager.GetSection("redis") as RedisConfigurationSection;
             if (redisConfig != null)
             {
                 var connectionPools = new ShardedConnectionPool[redisConfig.Pools.Count];

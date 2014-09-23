@@ -27,9 +27,9 @@ namespace Iridescent.Memcached
             return _client.Store(StoreMode.Set, key, value, expiresAt);
         }
 
-        public bool Set(string key, object value, TimeSpan validateFor)
+        public bool Set(string key, object value, TimeSpan expiresIn)
         {
-            return _client.Store(StoreMode.Set, key, value, validateFor);
+            return _client.Store(StoreMode.Set, key, value, expiresIn);
         }
 
         public object Get(string key)

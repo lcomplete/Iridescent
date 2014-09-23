@@ -70,6 +70,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CacheHandler\CachingHandlerTest.cs" />
+    <Compile Include="Redis\BinaryRedisCacheTest.cs" />
+    <Compile Include="Redis\HybridRedisCacheTest.cs" />
     <Compile Include="Redis\RedisTest.cs" />
     <Compile Include="Utils\DateTimeUtilsTest.cs" />
     <Compile Include="Utils\IDCardVerifyTest.cs" />

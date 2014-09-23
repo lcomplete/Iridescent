@@ -153,6 +153,10 @@
       <Project>{1f6dbac8-a556-4e05-af5d-bf002f12cecc}</Project>
       <Name>Iridescent.Memcached</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Iridescent.Redis\Iridescent.Redis.csproj">
+      <Project>{b8ad2d6e-5ab3-45e5-aa8a-bf7a7623309d}</Project>
+      <Name>Iridescent.Redis</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -167,7 +171,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>48283</DevelopmentServerPort>
+          <DevelopmentServerPort>9420</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>

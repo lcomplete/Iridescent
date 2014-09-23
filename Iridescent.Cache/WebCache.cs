@@ -22,9 +22,9 @@ namespace Iridescent.Cache
             return true;
         }
 
-        public bool Set(string key, object value, TimeSpan validateFor)
+        public bool Set(string key, object value, TimeSpan expiresIn)
         {
-            Set(key, value, DateTime.Now.Add(validateFor));
+            Set(key, value, DateTime.Now.Add(expiresIn));
             return true;
         }
 

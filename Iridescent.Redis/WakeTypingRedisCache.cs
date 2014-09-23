@@ -1,30 +1,19 @@
 ﻿using System;
-using System.IO;
-using System.Runtime.Serialization.Formatters.Binary;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using Iridescent.Cache;
 using ServiceStack.Redis;
+using ServiceStack.Text;
 
 namespace Iridescent.Redis
 {
     /// <summary>
-    /// Redis缓存类
+    /// 弱类型的redis缓存类(RedisCache 已进行强类型封装，该类弃用)
     /// </summary>
-    public class RedisCache:ICache
+    [Obsolete]
+    public class WakeTypingRedisCache:ICache
     {
-        /// <summary>
-        /// 将缓存值包装为强类型
-        /// </summary>
-        [Serializable]
-        class ValueWrapper
-        {
-            public object Value { get; private set; }
-
-            public ValueWrapper(object value)
-            {
-                Value = value;
-            }
-        }
-
         public bool Set(string key, object value)
         {
             IRedisClient client = RedisFactory.CreateClient(key);
@@ -33,9 +22,14 @@ namespace Iridescent.Redis
 
             using (client)
             {
-                return client.Set(key, new ValueWrapper(value));
+                return client.Set(key, WrapCacheValue(value));
             }
         }
+
+        private KeyValuePair<Type, object> WrapCacheValue(object cacheValue)
+        {
+            return new KeyValuePair<Type, object>(cacheValue.GetType(), cacheValue);
+        } 
 
         public bool Set(string key, object value, DateTime expiresAt)
         {
@@ -45,7 +39,7 @@ namespace Iridescent.Redis
 
             using (client)
             {
-                return client.Set(key, new ValueWrapper(value), expiresAt);
+                return client.Set(key, WrapCacheValue(value), expiresAt);
             }
         }
 
@@ -57,13 +51,27 @@ namespace Iridescent.Redis
 
             using (client)
             {
-                return client.Set(key, new ValueWrapper(value), expiresIn);
+                return client.Set(key, WrapCacheValue(value), expiresIn);
             }
         }
 
         public object Get(string key)
         {
-            return Get<object>(key);
+            IRedisClient client = RedisFactory.CreateClient(key);
+            if (client == null)
+                return null;
+
+            object result = null;
+            using (client)
+            {
+                var cacheResult = client.Get<KeyValuePair<Type, string>>(key);
+                if (cacheResult.Key != null)
+                {
+                    result = JsonSerializer.DeserializeFromString(cacheResult.Value, cacheResult.Key);
+                }
+            }
+
+            return result;
         }
 
         public T Get<T>(string key)
@@ -75,10 +83,10 @@ namespace Iridescent.Redis
             T result = default(T);
             using (client)
             {
-                ValueWrapper wrapper= client.Get<ValueWrapper>(key);
-                if (wrapper != null)
+                var cacheResult = client.Get<KeyValuePair<Type, T>>(key);
+                if (cacheResult.Key != null)
                 {
-                    return (T) wrapper.Value;
+                    result = cacheResult.Value;
                 }
             }
 
@@ -100,6 +108,6 @@ namespace Iridescent.Redis
         public void FlushAll()
         {
             throw new NotSupportedException("缓存为分布式结构，暂不支持清空所有缓存");
-        }
+        }   
     }
 }
