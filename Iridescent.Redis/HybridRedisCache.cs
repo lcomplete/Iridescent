@@ -131,24 +131,26 @@ namespace Iridescent.Redis
             T result = default(T);
             using (client)
             {
-                byte[] buffer = client.Get<byte[]>(key);
-                bool isDeserializable = false;
-                try
+                bool isDeserializable = IsSerializableType(typeof(T));
+                if (isDeserializable)
                 {
-                    //先尝试进行二进制序列化
-                    if (buffer != null)
+                    try
                     {
-                        using (MemoryStream ms = new MemoryStream(buffer))
+                        //先尝试进行二进制序列化
+                        byte[] buffer = client.Get<byte[]>(key);
+                        if (buffer != null)
                         {
-                            object obj = new BinaryFormatter().Deserialize(ms);
-                            result = (T) obj;
-                            isDeserializable = true;
+                            using (MemoryStream ms = new MemoryStream(buffer))
+                            {
+                                object obj = new BinaryFormatter().Deserialize(ms);
+                                result = (T) obj;
+                            }
                         }
                     }
-                }
-                catch
-                {
-                    isDeserializable = false;
+                    catch
+                    {
+                        isDeserializable = false;
+                    }
                 }
 
                 if(!isDeserializable)
