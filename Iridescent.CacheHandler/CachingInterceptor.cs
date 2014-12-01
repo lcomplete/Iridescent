@@ -30,18 +30,17 @@ namespace Iridescent.CacheHandler
             else
             {
                 string cacheKey = _keyGenerator.CreateCacheKey(method, invocation.Arguments);
-                CacheManager cacheManager = new CacheManager(cachingAttribute.Group);
-                object cachedResult = cacheManager.Get(cacheKey);
+                object cachedResult = CacheManager.Get(cacheKey);
                 if(cachedResult==null)
                 {
                     lock (method)
                     {
-                        cachedResult = cacheManager.Get(cacheKey);
+                        cachedResult = CacheManager.Get(cacheKey);
                         if (cachedResult == null)
                         {
                             invocation.Proceed();
                             cachedResult = invocation.ReturnValue;
-                            cacheManager.Set(cacheKey, cachedResult, cachingAttribute.CacheTimeSpan);
+                            CacheManager.Set(cacheKey, cachedResult, cachingAttribute.CacheTimeSpan);
                         }
                     }
                 }

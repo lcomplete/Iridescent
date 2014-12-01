@@ -141,6 +141,18 @@ namespace Iridescent.Cache
         }
 
         /// <summary>
+        /// 获取缓存对象
+        /// </summary>
+        /// <typeparam name="T">对象类型</typeparam>
+        /// <param name="key">缓存键</param>
+        /// <returns></returns>
+        public static object Get(string key) 
+        {
+            ICache cache = CacheFactory.CreateDefault();
+            return cache.Get(WrapKey(key));
+        }
+
+        /// <summary>
         /// 移除缓存对象
         /// </summary>
         /// <param name="key">缓存对象</param>
