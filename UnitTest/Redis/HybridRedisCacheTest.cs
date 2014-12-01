@@ -33,7 +33,7 @@ namespace UnitTest.Redis
             for (int i = 0; i < 10000; i++)
             {
                 DataRow row = dt.NewRow();
-                row["a"] = new string('中', 1000);
+                row["a"] = new string('b', 1000);
                 dt.Rows.Add(row);
             }
             CacheIt(dt);

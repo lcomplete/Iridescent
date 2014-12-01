@@ -12,7 +12,7 @@ namespace Iridescent.Cache
 
         private static readonly object SyncRoot = new object();
 
-        public static ICache CreateDefault()
+        public static ICache Create()
         {
             string cacheProvider = ConfigurationManager.AppSettings["CacheProvider"] ?? string.Empty;
             ICache cache = null;

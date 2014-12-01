@@ -31,7 +31,7 @@ namespace Examples.Cache
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            ICache cache = CacheFactory.CreateDefault();
+            ICache cache = CacheFactory.Create();
             object obj = cache.Get("key");
 
             if(obj==null)
